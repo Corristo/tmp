@@ -22,9 +22,12 @@ target_compile_features(boost_tmp INTERFACE
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/boost/)
 
-add_executable(boost_tmp_test test/test.cpp)
-target_link_libraries(boost_tmp_test boost_tmp)
-target_compile_options(boost_tmp_test PUBLIC -ftemplate-depth=2048 -Wall)
+option(TMP_BUILD_TESTS ON)
+if (TMP_BUILD_TESTS)
+  add_executable(boost_tmp_test test/test.cpp)
+  target_link_libraries(boost_tmp_test boost_tmp)
+  target_compile_options(boost_tmp_test PUBLIC -ftemplate-depth=2048 -Wall)
+endif()
 
 option(MAKE_INCLUDE_TESTS OFF)
 if (MAKE_INCLUDE_TESTS)
