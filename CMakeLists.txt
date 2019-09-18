@@ -20,7 +20,8 @@ target_compile_features(boost_tmp INTERFACE
 		#cxx_user_literals
 		${CPP_EXTRA_FEATURES})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/boost/)
+target_include_directories(boost_tmp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/boost/)
+target_include_directories(boost_tmp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
 option(TMP_BUILD_TESTS ON)
 if (TMP_BUILD_TESTS)
