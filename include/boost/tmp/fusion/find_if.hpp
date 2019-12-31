@@ -45,7 +45,7 @@ namespace boost {
 			struct ast<find_if_<F, identity_>, listify_> { // break recursion
 				find_if_<F, identity_> head;
 				template <typename... Bs> // not found case
-				constexpr nothing_ f(list_<nothing_>, const pack<Bs...> &p) {
+				constexpr nothing_ f(list_<nothing_>, const pack<Bs...> &) {
 					return nothing_{};
 				};
 				template <typename T, typename... Bs>

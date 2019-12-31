@@ -64,11 +64,11 @@ namespace boost {
 			struct ast<filter_<F, listify_>, listify_> { // break recursion
 				filter_<F, listify_> head;
 				template <typename... Ts, typename... FBs, typename... Bs>
-				constexpr auto f(list_<list_<FBs...>, list_<Ts...>> t, const pack<Bs...> &&p) {
+				constexpr auto f(list_<list_<FBs...>, list_<Ts...>>, const pack<Bs...> &&p) {
 					return pack<Ts...>{Ts{static_cast<const FBs &&>(p).get()}...};
 				};
 				template <typename... Ts, typename... FBs, typename... Bs>
-				constexpr auto f(list_<list_<FBs...>, list_<Ts...>> t, const pack<Bs...> &p) {
+				constexpr auto f(list_<list_<FBs...>, list_<Ts...>>, const pack<Bs...> &p) {
 					return pack<Ts...>{Ts{static_cast<const FBs &>(p).get()}...};
 				};
 				template <typename... Ts>

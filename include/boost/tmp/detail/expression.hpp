@@ -81,7 +81,7 @@ namespace boost {
 				template <typename T>
 				struct make_expr<T, typename voider<typename rebind<T>::type>::type> {
 					template <typename L, typename R>
-					constexpr expr<typename rebind<T>::type, L> operator()(L l, R r) {
+					constexpr expr<typename rebind<T>::type, L> operator()(L l, R) {
 						return {{}, l};
 					}
 				};

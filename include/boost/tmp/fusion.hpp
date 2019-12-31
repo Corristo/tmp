@@ -25,26 +25,26 @@ namespace boost {
 			// will SFINAE if there is no rebind specialization
 			template <typename... Bs, typename F, typename RF = typename rebind<F>::type,
 			          typename type = typename RF::template exec<Bs...>>
-			constexpr auto operator>>=(const pack<Bs...> &&p, F f)
+			constexpr auto operator>>=(const pack<Bs...> &&p, F)
 			        -> decltype(RF{}.f(type{}, std::move(p))) {
 				return RF{}.f(type{}, std::move(p));
 			};
 			// will SFINAE if there is no rebind specialization
 			template <typename... Bs, typename F, typename RF = typename rebind<F>::type,
 			          typename type = typename RF::template exec<Bs...>>
-			constexpr auto operator>>=(pack<Bs...> &&p, F f)
+			constexpr auto operator>>=(pack<Bs...> &&p, F)
 			        -> decltype(RF{}.f(type{}, std::move(p))) {
 				return RF{}.f(type{}, std::move(p));
 			};
 			// will SFINAE if there is no rebind specialization
 			template <typename... Bs, typename F, typename RF = typename rebind<F>::type,
 			          typename type = typename RF::template exec<Bs...>>
-			constexpr auto operator>>=(const pack<Bs...> &p, F f) {
+			constexpr auto operator>>=(const pack<Bs...> &p, F) {
 				return RF{}.f(type{}, p);
 			};
 			// will SFINAE if there is no rebind specialization
 			template <typename... Bs, typename F, typename RF = typename rebind<F>::type>
-			constexpr auto operator>>=(pack<Bs...> &p, F f) {
+			constexpr auto operator>>=(pack<Bs...> &p, F) {
 				using type = typename RF::template exec<Bs...>;
 				return RF{}.f(type{}, p);
 			};
